@@ -3,11 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'pages/Login/components/FormField/FormField';
 import { Form } from 'pages/Login/components/LoginForm/LoginForm.styles';
 import { Button } from 'components';
-
-export interface InputsProps {
-  email: string
-  password: string
-}
+import { InputsProps } from 'pages/Login/components/LoginForm/LoginForm.interface';
 
 export const LoginForm = () => {
   const {

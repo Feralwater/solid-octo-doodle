@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ButtonProps {
   size: 'large' | 'medium' | 'small'
   color: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'
@@ -6,4 +8,5 @@ export interface ButtonProps {
   type: 'button' | 'submit' | 'reset'
   onClick: () => void
   iconUrl?: string
+  children: ReactNode
 }
