@@ -2,6 +2,7 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'pages/Login/components/FormField/FormField';
 import { Form } from 'pages/Login/components/LoginForm/LoginForm.styles';
+import { Button } from 'components';
 
 export interface InputsProps {
   email: string
@@ -37,11 +38,14 @@ export const LoginForm = () => {
         label="Password"
         type="password"
       />
-      <button
+      <Button
+        color="primary"
+        size="large"
+        onClick={handleSubmit(onSubmit)}
         type="submit"
       >
         Login
-      </button>
+      </Button>
     </Form>
   );
 };
