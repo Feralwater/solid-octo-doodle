@@ -6,8 +6,6 @@ interface ILink {
   children: ReactNode;
 }
 
-const Link = ({ to, ...props }:ILink) => (
+export const Link = ({ to, ...props }:ILink) => (
   <StyledLink href={to} {...props} />
 );
-
-export default Link;
