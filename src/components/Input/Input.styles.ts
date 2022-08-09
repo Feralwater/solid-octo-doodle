@@ -8,13 +8,13 @@ export const InputContainer = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  color: violet;
+  ${({ theme }) => theme.colors.thunder}
   font-weight: 500;
   font-size: 1.5rem;
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   border-radius: 8px;
   outline: none;
@@ -22,18 +22,15 @@ export const StyledInput = styled.input<StyledInputProps>`
   font-size: ${({ inputSize }) => (inputSize === 'large' ? '1.7rem' : '1.5rem')};
   line-height: ${({ inputSize }) => (inputSize === 'large' ? '140%' : '90%')};
   font-weight: 500;
-  border: 1px solid red;
+  border: none;
   padding: 15px 10px;
-  color: blue;
+  color:  ${({ theme }) => theme.colors.thunder};
+  box-shadow: ${({ theme }) => theme.shadow.inputShadow};
   
   ${(props) => props.disabled && css`
-    background-color: gray;
+    background-color: ${({ theme }) => theme.colors.grey};
   `}
   &:focus {
-    border: 1px solid green;
-  }
-
-  &::placeholder {
-    color: goldenrod;
+    border: ${({ theme }) => theme.border.focus};
   }
 `;

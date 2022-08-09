@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
   html {
     scroll-behavior: smooth;
+    font-size: 10px;
   }
   body {
     font-family: 'Poppins', sans-serif;

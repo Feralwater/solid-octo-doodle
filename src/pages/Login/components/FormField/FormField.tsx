@@ -11,7 +11,6 @@ interface FormFieldProps {
   type: 'email' | 'password'
   label: string
   id: string
-  placeholder: string
 }
 
 export const FormField = (
@@ -19,7 +18,6 @@ export const FormField = (
     control,
     errors,
     id,
-    placeholder,
     label,
     name,
     type,
@@ -35,7 +33,6 @@ export const FormField = (
           inputSize="small"
           label={label}
           id={id}
-          placeholder={placeholder}
           type={type}
           name={field.name}
           onChange={field.onChange}
