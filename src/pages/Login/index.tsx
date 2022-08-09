@@ -15,7 +15,6 @@ const Login = () => (
     <SocialMediaButton icon={<Google />} text="Sign in with Google" />
     <SocialMediaButton icon={<Facebook />} text="Sign in with Facebook" />
     <LoginForm />
-    <Link to="/forgot-password">Forgot password?</Link>
   </SignIn>
 );
 

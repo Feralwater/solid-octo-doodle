@@ -1,8 +1,8 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'pages/Login/components/FormField/FormField';
-import { Form } from 'pages/Login/components/LoginForm/LoginForm.styles';
-import { Button } from 'components';
+import { ForgotLink, Form } from 'pages/Login/components/LoginForm/LoginForm.styles';
+import { Button, Link } from 'components';
 import { InputsProps } from 'pages/Login/components/LoginForm/LoginForm.interface';
 
 export const LoginForm = () => {
@@ -24,14 +24,19 @@ export const LoginForm = () => {
         label="Email"
         type="email"
       />
-      <FormField
-        name="password"
-        control={control}
-        errors={errors}
-        id="password"
-        label="Password"
-        type="password"
-      />
+      <div>
+        <FormField
+          name="password"
+          control={control}
+          errors={errors}
+          id="password"
+          label="Password"
+          type="password"
+        />
+        <ForgotLink>
+          <Link to="/forgot-password">Forgot password?</Link>
+        </ForgotLink>
+      </div>
       <Button
         color="primary"
         size="large"
