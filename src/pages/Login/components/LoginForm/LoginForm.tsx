@@ -21,7 +21,6 @@ export const LoginForm = () => {
         control={control}
         errors={errors}
         id="email"
-        placeholder="Email"
         label="Email"
         type="email"
       />
@@ -30,7 +29,6 @@ export const LoginForm = () => {
         control={control}
         errors={errors}
         id="password"
-        placeholder="Password"
         label="Password"
         type="password"
       />

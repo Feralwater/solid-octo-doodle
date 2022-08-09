@@ -6,7 +6,7 @@ export const StyledButton = styled.button<ButtonProps>`
   min-width: fit-content;
   justify-content: center;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 32px;
   border: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -30,11 +30,11 @@ export const StyledButton = styled.button<ButtonProps>`
   `}
 
   ${({ color }) => color === 'primary' && css`
-    background-color: brown;
-    color: white;
+    background: ${({ theme }) => theme.gradient.primary};
+    color: ${({ theme }) => theme.colors.white};
 
     &:enabled:hover {
-      background-color: blueviolet;
+      background: ${({ theme }) => theme.gradient.transparent};
     }
   `}
 
@@ -101,7 +101,7 @@ export const StyledButton = styled.button<ButtonProps>`
   `)
 }
   ${({ disabled }) => disabled && css`
-    background-color: gold;
-    color: black;
+    background: ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colors.white};
   `}
 `;

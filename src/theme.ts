@@ -1,11 +1,12 @@
 export const theme = {
   colors: {
     black: '#000000',
-    white: '#ffffff',
+    white: '#FFFFFF',
     transparent: 'transparent',
     malibu: '#78B5FA',
     thunder: '#242833',
-    grey: '#7f7e7e',
+    lavender: '#9586FD',
+    grey: '#979797',
   },
 
   shadow: {
@@ -14,5 +15,9 @@ export const theme = {
 
   border: {
     focus: '2px solid #78B5FA',
+  },
+
+  gradient: {
+    primary: 'linear-gradient(to right, #78B5FA, #9586FD)',
   },
 };
