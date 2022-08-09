@@ -6,7 +6,7 @@ export const InputContainer = styled.div`
 
 export const ErrorBubble = styled.div`
   position: absolute;
-  color: deeppink;
+  color: ${({ theme }) => theme.colors.pink};
   font-size: 1.2rem;
   bottom: -17px;
 `;
