@@ -14,7 +14,7 @@ export const LoginWithSocialMediaButton = styled.button`
   text-transform: capitalize;
   overflow: hidden;
   line-height: 120%;
-  background-color: ${({ theme }) => theme.colors.transparent};
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.buttonShadow};
   margin-bottom: 1rem;
   border: ${({ theme }) => theme.border.button};

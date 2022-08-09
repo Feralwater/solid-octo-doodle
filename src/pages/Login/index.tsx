@@ -7,9 +7,13 @@ import SocialMediaButton from './components/SocialMediaButton/SocialMediaButton'
 
 const Login = () => (
   <SignIn>
-    <SocialMediaButton icon={<Google />} text="Sign up with Google" />
-    <SocialMediaButton icon={<Facebook />} text="Sign up with Facebook" />
+    Welcome back
+    you don`t have an account?
+    Create new account
+    <SocialMediaButton icon={<Google />} text="Sign in with Google" />
+    <SocialMediaButton icon={<Facebook />} text="Sign in with Facebook" />
     <LoginForm />
+    forgot password?
   </SignIn>
 );
 

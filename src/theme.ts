@@ -7,6 +7,8 @@ export const theme = {
     thunder: '#242833',
     lavender: '#9586FD',
     grey: '#979797',
+    iron: '#D3D7E0',
+    ghost: '#F7F9FC',
   },
 
   shadow: {
