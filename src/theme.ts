@@ -15,6 +15,7 @@ export const theme = {
 
   border: {
     focus: '2px solid #78B5FA',
+    button: '1px solid #78B5FA',
   },
 
   gradient: {
