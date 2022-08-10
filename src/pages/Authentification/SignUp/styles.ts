@@ -10,3 +10,25 @@ export const SignUpContent = styled.div`
   flex-direction: column;
   justify-content: space-around;
 `;
+
+export const BackgroundBubble = styled.div`
+  background-color: ${({ theme }) => theme.colors.primary};
+  position: absolute;
+  width: 100%;
+  height: 425px;
+  opacity: 0.2;
+`;
+
+export const LeftBackgroundBubble = styled(BackgroundBubble)`
+  border-radius: 65% 110% 0 170%;
+  left: 0;
+  bottom: 110px;
+  transform: rotate(170deg);
+`;
+
+export const RightBackgroundBubble = styled(BackgroundBubble)`
+  border-radius: 80% 0 35% 0;
+  left: 0;
+  top: 110px;
+  transform: rotate(190deg);
+`;

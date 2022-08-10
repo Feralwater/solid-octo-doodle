@@ -3,11 +3,18 @@ import { Headline3 } from 'topography';
 import { Link, Paragraph } from 'components';
 import { ReactComponent as Google } from 'assets/svg/google.svg';
 import { ReactComponent as Facebook } from 'assets/svg/facebook.svg';
-import { SignUpContent, SignUpFormContainer } from 'pages/Authentification/SignUp/styles';
+import {
+  LeftBackgroundBubble,
+  RightBackgroundBubble,
+  SignUpContent,
+  SignUpFormContainer,
+} from 'pages/Authentification/SignUp/styles';
 import { SocialMediaButton, AuthLayout, SignUpForm } from '../components';
 
 const SignUp = () => (
   <AuthLayout>
+    <LeftBackgroundBubble />
+    <RightBackgroundBubble />
     <SignUpContent>
       <div>
         <Headline3>Create your free account</Headline3>
