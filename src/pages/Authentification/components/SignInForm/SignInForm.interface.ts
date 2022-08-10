@@ -1,4 +1,4 @@
-export interface InputsProps {
+export interface ISignInInputs {
   email: string
   password: string
 }

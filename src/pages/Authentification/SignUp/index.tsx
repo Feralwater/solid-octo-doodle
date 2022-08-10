@@ -4,7 +4,7 @@ import { Link, Paragraph } from 'components';
 import { ReactComponent as Google } from 'assets/svg/google.svg';
 import { ReactComponent as Facebook } from 'assets/svg/facebook.svg';
 import { SignUpContent, SignUpFormContainer } from 'pages/Authentification/SignUp/styles';
-import { SocialMediaButton, SignInForm, AuthLayout } from '../components';
+import { SocialMediaButton, AuthLayout, SignUpForm } from '../components';
 
 const SignUp = () => (
   <AuthLayout>
@@ -20,7 +20,7 @@ const SignUp = () => (
       </div>
     </SignUpContent>
     <SignUpFormContainer>
-      <SignInForm />
+      <SignUpForm />
     </SignUpFormContainer>
   </AuthLayout>
 );

@@ -1,4 +1,5 @@
 export * from './SocialMediaButton/SocialMediaButton';
-export * from 'pages/Authentification/components/SignInForm/SignInForm';
+export * from './SignInForm/SignInForm';
 export * from './FormField/FormField';
 export * from './AuthLayout/AuthLayout';
+export * from './SignUpForm/SignUpForm';

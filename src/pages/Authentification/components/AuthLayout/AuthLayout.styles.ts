@@ -8,6 +8,6 @@ export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
 `;

@@ -3,14 +3,14 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormField } from 'pages/Authentification/components';
 import { ForgotLink, Form } from 'pages/Authentification/components/SignInForm/SignInForm.styles';
 import { Button, Link } from 'components';
-import { InputsProps } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
+import { ISignInInputs } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
 
 export const SignInForm = () => {
   const {
     handleSubmit, control, formState: { errors },
-  } = useForm<InputsProps>();
+  } = useForm<ISignInInputs>();
 
-  const onSubmit: SubmitHandler<InputsProps> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<ISignInInputs> = ({ email, password }) => {
     alert(`${email}, ${password}}`);
   };
 

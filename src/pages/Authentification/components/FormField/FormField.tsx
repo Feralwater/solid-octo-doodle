@@ -2,13 +2,14 @@ import { Control, Controller, FieldErrors } from 'react-hook-form';
 import React from 'react';
 import { Input } from 'components';
 import { ErrorBubble, InputContainer } from 'pages/Authentification/components/FormField/FormField.styles';
-import { InputsProps } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
+import { ISignInInputs } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
+import { ISignUpInputs } from 'pages/Authentification/components/SignUpForm/SignUpForm.interface';
 
 interface FormFieldProps {
-  control: Control<InputsProps>
-  errors: FieldErrors<InputsProps>
-  name: 'email' | 'password'
-  type: 'email' | 'password'
+  control: Control<ISignInInputs | ISignUpInputs>
+  errors: FieldErrors<ISignInInputs | ISignUpInputs>
+  name: 'email' | 'password' | 'phone' | 'username'
+  type: 'email' | 'password' | 'tel' | 'text'
   label: string
   id: string
 }
