@@ -1,16 +1,14 @@
 import React, { ReactNode } from 'react';
-import { LoginWithSocialMediaButton } from './SocialMediaButton.styles';
+import { LoginWithSocialMediaButton } from 'pages/Authentification/components/SocialMediaButton/SocialMediaButton.styles';
 
 interface ISocialMediaButton {
   icon: ReactNode;
   text: string;
 }
 
-const SocialMediaButton = ({ icon, text }:ISocialMediaButton) => (
+export const SocialMediaButton = ({ icon, text }:ISocialMediaButton) => (
   <LoginWithSocialMediaButton type="button">
     <i>{icon}</i>
     <span>{text}</span>
   </LoginWithSocialMediaButton>
 );
-
-export default SocialMediaButton;

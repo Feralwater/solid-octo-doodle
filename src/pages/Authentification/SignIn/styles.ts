@@ -1,17 +1,5 @@
 import styled from 'styled-components';
 
-export const SignIn = styled.div`
-  padding: 1rem 2rem 4rem 2rem;
-  background-color: ${({ theme }) => theme.colors.ghost};
-  min-height: 100vh;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-`;
-
 export const SignInContent = styled.div`
   flex: 1 0 auto;
   display: flex;
@@ -19,7 +7,7 @@ export const SignInContent = styled.div`
   justify-content: space-around;
 `;
 
-export const SignInForm = styled.div`
+export const SignInFormContainer = styled.div`
   flex: 0 0 auto;
 `;
 

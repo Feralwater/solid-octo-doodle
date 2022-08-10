@@ -1,11 +1,11 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FormField } from 'pages/Login/components/FormField/FormField';
-import { ForgotLink, Form } from 'pages/Login/components/LoginForm/LoginForm.styles';
+import { FormField } from 'pages/Authentification/components';
+import { ForgotLink, Form } from 'pages/Authentification/components/SignInForm/SignInForm.styles';
 import { Button, Link } from 'components';
-import { InputsProps } from 'pages/Login/components/LoginForm/LoginForm.interface';
+import { InputsProps } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
 
-export const LoginForm = () => {
+export const SignInForm = () => {
   const {
     handleSubmit, control, formState: { errors },
   } = useForm<InputsProps>();
@@ -43,7 +43,7 @@ export const LoginForm = () => {
         onClick={handleSubmit(onSubmit)}
         type="submit"
       >
-        Login
+        Sign In
       </Button>
     </Form>
   );

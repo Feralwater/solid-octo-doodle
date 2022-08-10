@@ -1,8 +1,8 @@
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import React from 'react';
 import { Input } from 'components';
-import { ErrorBubble, InputContainer } from 'pages/Login/components/FormField/FormField.styles';
-import { InputsProps } from 'pages/Login/components/LoginForm/LoginForm.interface';
+import { ErrorBubble, InputContainer } from 'pages/Authentification/components/FormField/FormField.styles';
+import { InputsProps } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
 
 interface FormFieldProps {
   control: Control<InputsProps>

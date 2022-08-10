@@ -1,5 +1,5 @@
 import { PATH } from 'routes/constants';
-import Login from 'pages/Login';
+import Login from 'pages/Authentification/SignIn';
 import SignUp from './SignUp';
 
 export const authRoutes = [

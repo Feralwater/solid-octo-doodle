@@ -1,17 +1,18 @@
 import React from 'react';
-import { LoginForm } from 'pages/Login/components/LoginForm/LoginForm';
 import { ReactComponent as Google } from 'assets/svg/google.svg';
 import { ReactComponent as Facebook } from 'assets/svg/facebook.svg';
 import {
-  LeftBackgroundBubble, RightBackgroundBubble,
-  SignIn, SignInContent, SignInForm,
-} from 'pages/Login/styles';
+  LeftBackgroundBubble,
+  RightBackgroundBubble,
+  SignInContent,
+  SignInFormContainer,
+} from 'pages/Authentification/SignIn/styles';
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
-import SocialMediaButton from './components/SocialMediaButton/SocialMediaButton';
+import { AuthLayout, SignInForm, SocialMediaButton } from '../components';
 
-const Login = () => (
-  <SignIn>
+const SignIn = () => (
+  <AuthLayout>
     <LeftBackgroundBubble />
     <RightBackgroundBubble />
     <SignInContent>
@@ -25,10 +26,10 @@ const Login = () => (
         <SocialMediaButton icon={<Facebook />} text="Sign in with Facebook" />
       </div>
     </SignInContent>
-    <SignInForm>
-      <LoginForm />
-    </SignInForm>
-  </SignIn>
+    <SignInFormContainer>
+      <SignInForm />
+    </SignInFormContainer>
+  </AuthLayout>
 );
 
-export default Login;
+export default SignIn;
