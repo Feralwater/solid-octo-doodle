@@ -18,7 +18,7 @@ const Login = () => (
       <div>
         <Headline3>Welcome back</Headline3>
         <Paragraph>You don`t have an account?</Paragraph>
-        <Link to="/signup">Create new account</Link>
+        <Link to="/sign-up">Create new account</Link>
       </div>
       <div>
         <SocialMediaButton icon={<Google />} text="Sign in with Google" />

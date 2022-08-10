@@ -7,5 +7,5 @@ interface ILink {
 }
 
 export const Link = ({ to, ...props }:ILink) => (
-  <StyledLink href={to} {...props} />
+  <StyledLink to={to} {...props} />
 );

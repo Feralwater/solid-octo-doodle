@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 const GlobalStyle = createGlobalStyle`
@@ -31,7 +32,9 @@ root.render(
   <React.StrictMode>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
 );
