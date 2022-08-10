@@ -13,7 +13,7 @@ export const theme = {
   },
 
   shadow: {
-    inputShadow: 'rgba(171, 171, 171, 0.89) 0px 5px 15px -5px',
+    inputShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
   },
 
   border: {
