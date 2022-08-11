@@ -4,6 +4,7 @@ import { Link, Paragraph } from 'components';
 import { ReactComponent as Google } from 'assets/svg/google.svg';
 import { ReactComponent as Facebook } from 'assets/svg/facebook.svg';
 import {
+  Header,
   LeftBackgroundBubble,
   RightBackgroundBubble,
   SignUpContent,
@@ -16,11 +17,11 @@ const SignUp = () => (
     <LeftBackgroundBubble />
     <RightBackgroundBubble />
     <SignUpContent>
-      <div>
+      <Header>
         <Headline3>Create your free account</Headline3>
         <Paragraph>Do you already have an account?</Paragraph>
         <Link to="/sign-in">Sign In</Link>
-      </div>
+      </Header>
       <div>
         <SocialMediaButton icon={<Google />} text="Continue with Google" />
         <SocialMediaButton icon={<Facebook />} text="Continue with Facebook" />

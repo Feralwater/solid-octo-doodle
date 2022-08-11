@@ -18,6 +18,7 @@ export const BackgroundBubble = styled.div`
   width: 100%;
   height: 200px;
   box-sizing: border-box;
+  z-index: 0;
 `;
 
 export const LeftBackgroundBubble = styled(BackgroundBubble)`
@@ -30,4 +31,8 @@ export const RightBackgroundBubble = styled(BackgroundBubble)`
   top: -60px;
   right: -25%;
   border-radius: 0 0 0 100%;
+`;
+
+export const Header = styled.header`
+  z-index: 1;
 `;
