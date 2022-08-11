@@ -8,7 +8,6 @@ export interface StyledInputProps {
 }
 
 export type InputProps = DefaultInputProps & StyledInputProps & {
-  inputSize: 'small' | 'large'
   label: string
   onEnter?: () => void
   id: string

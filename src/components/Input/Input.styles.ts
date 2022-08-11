@@ -27,7 +27,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   color:  ${({ theme }) => theme.colors.thunder};
   box-shadow: ${({ theme }) => theme.shadow.inputShadow};
   
-  ${(props) => props.disabled && css`
+  ${({ disabled }) => disabled && css`
     background-color: ${({ theme }) => theme.colors.grey};
   `}
   &:focus {
