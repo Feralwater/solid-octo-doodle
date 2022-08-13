@@ -10,6 +10,7 @@ import { Button, Input, Link } from 'components';
 import { ISignInInputs } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { PATH } from 'routes/constants';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -56,7 +57,7 @@ export const SignInForm = () => {
           <ErrorBubble>{errors.password?.message}</ErrorBubble>
         </InputContainer>
         <ForgotLink>
-          <Link to="/forgot-password">Forgot password?</Link>
+          <Link to={PATH.RESTORE_PASSWORD}>Forgot password?</Link>
         </ForgotLink>
       </div>
       <Button

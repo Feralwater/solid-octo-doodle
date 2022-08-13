@@ -10,6 +10,7 @@ import {
 } from 'pages/Authentification/SignIn/styles';
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
+import { PATH } from 'routes/constants';
 import { AuthLayout, SignInForm, SocialMediaButton } from '../components';
 
 const SignIn = () => (
@@ -20,7 +21,7 @@ const SignIn = () => (
       <Header>
         <Headline3>Welcome back</Headline3>
         <Paragraph>You don`t have an account?</Paragraph>
-        <Link to="/sign-up">Create new account</Link>
+        <Link to={PATH.SIGN_UP}>Create new account</Link>
       </Header>
       <div>
         <SocialMediaButton icon={<Google />} text="Sign in with Google" />

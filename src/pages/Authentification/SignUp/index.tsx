@@ -10,6 +10,7 @@ import {
   SignUpContent,
   SignUpFormContainer,
 } from 'pages/Authentification/SignUp/styles';
+import { PATH } from 'routes/constants';
 import { SocialMediaButton, AuthLayout, SignUpForm } from '../components';
 
 const SignUp = () => (
@@ -20,7 +21,7 @@ const SignUp = () => (
       <Header>
         <Headline3>Create your free account</Headline3>
         <Paragraph>Do you already have an account?</Paragraph>
-        <Link to="/sign-in">Sign In</Link>
+        <Link to={PATH.SIGN_IN}>Sign In</Link>
       </Header>
       <div>
         <SocialMediaButton icon={<Google />} text="Continue with Google" />
