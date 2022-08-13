@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { PrivateRoute } from 'routes';
 import { authRoutes } from 'pages/Authentification/constants';
+import { PrivateRoute } from 'routes/PrivateRoute';
 
 export const getAuthRoutes = () => authRoutes.map(({ path, element: Element }) => (
   <Route
