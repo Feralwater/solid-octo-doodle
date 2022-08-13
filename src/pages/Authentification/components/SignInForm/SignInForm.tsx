@@ -1,14 +1,32 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FormField } from 'pages/Authentification/components';
-import { ForgotLink, Form } from 'pages/Authentification/components/SignInForm/SignInForm.styles';
-import { Button, Link } from 'components';
+import {
+  ErrorBubble,
+  ForgotLink,
+  Form,
+  InputContainer,
+} from 'pages/Authentification/components/SignInForm/SignInForm.styles';
+import { Button, Input, Link } from 'components';
 import { ISignInInputs } from 'pages/Authentification/components/SignInForm/SignInForm.interface';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(4).max(15).required(),
+});
 
 export const SignInForm = () => {
   const {
-    handleSubmit, control, formState: { errors },
-  } = useForm<ISignInInputs>();
+    handleSubmit, register, formState: { errors },
+  } = useForm<ISignInInputs>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: yupResolver(schema),
+    mode: 'all',
+  });
 
   const onSubmit: SubmitHandler<ISignInInputs> = ({ email, password }) => {
     alert(`${email}, ${password}}`);
@@ -16,23 +34,27 @@ export const SignInForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        name="email"
-        control={control}
-        errors={errors}
-        id="email"
-        label="Email"
-        type="email"
-      />
-      <div>
-        <FormField
-          name="password"
-          control={control}
-          errors={errors}
-          id="password"
-          label="Password"
-          type="password"
+      <InputContainer>
+        <Input
+          inputSize="small"
+          label="Email"
+          id="email"
+          type="email"
+          {...register('email')}
         />
+        <ErrorBubble>{errors.email?.message}</ErrorBubble>
+      </InputContainer>
+      <div>
+        <InputContainer>
+          <Input
+            inputSize="small"
+            label="Password"
+            id="password"
+            type="password"
+            {...register('password')}
+          />
+          <ErrorBubble>{errors.password?.message}</ErrorBubble>
+        </InputContainer>
         <ForgotLink>
           <Link to="/forgot-password">Forgot password?</Link>
         </ForgotLink>

@@ -3,5 +3,16 @@ import styled from 'styled-components';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
+`;
+
+export const ErrorBubble = styled.div`
+  position: absolute;
+  color: ${({ theme }) => theme.colors.pink};
+  font-size: 1.2rem;
+  bottom: -2rem;
 `;

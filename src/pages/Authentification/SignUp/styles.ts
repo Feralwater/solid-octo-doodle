@@ -36,4 +36,5 @@ export const RightBackgroundBubble = styled(BackgroundBubble)`
 
 export const Header = styled.header`
   z-index: 1;
+  margin-bottom: 2rem;
 `;
