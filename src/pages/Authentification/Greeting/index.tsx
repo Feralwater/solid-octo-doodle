@@ -3,8 +3,8 @@ import { Paragraph } from 'components';
 import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
 import { Layout } from 'components/Layout/Layout';
-import { GreetingImage, GreetingLayout, StyledLink } from 'pages/Greeting/styles';
-import { ReactComponent as StartImage } from '../../assets/svg/startImage.svg';
+import { GreetingImage, GreetingLayout, StyledLink } from 'pages/Authentification/Greeting/styles';
+import { ReactComponent as StartImage } from 'assets/svg/startImage.svg';
 
 const Greeting = () => (
   <Layout>

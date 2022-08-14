@@ -3,6 +3,7 @@ export const PATH = {
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
   RESTORE_PASSWORD: '/restore-password',
+  RESTORE_LINK_SENT: '/restore-link-sent',
   MY_PROFILE: '/my-profile',
 };
 

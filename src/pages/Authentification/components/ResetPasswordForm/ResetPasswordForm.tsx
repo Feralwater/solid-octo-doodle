@@ -3,6 +3,8 @@ import { Button, Input } from 'components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router';
+import { PATH } from 'routes/constants';
 import { IResetPasswordForm } from './ResetPasswordForm.interface';
 import { ErrorBubble, Form, InputContainer } from './ResetPasswordForm.styles';
 
@@ -21,8 +23,10 @@ export const ResetPasswordForm = () => {
     mode: 'all',
   });
 
-  const onSubmit: SubmitHandler<IResetPasswordForm> = ({ email }) => {
-    alert(`${email}`);
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<IResetPasswordForm> = () => {
+    navigate(PATH.RESTORE_LINK_SENT);
   };
 
   return (
