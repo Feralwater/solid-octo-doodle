@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Layout = styled.div`
+export const StyledLayout = styled.div`
   padding: 1rem 2rem 4rem 2rem;
   background-color: ${({ theme }) => theme.colors.ghost};
   min-height: 100vh;

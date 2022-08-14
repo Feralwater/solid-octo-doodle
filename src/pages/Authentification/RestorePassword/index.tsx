@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
-import { AuthLayout, ResetPasswordForm } from '../components';
+import { Layout, ResetPasswordForm } from '../components';
 import { Header, LeftBackgroundBubble, RightBackgroundBubble } from './styles';
 
 const RestorePassword = () => (
-  <AuthLayout>
+  <Layout>
     <LeftBackgroundBubble />
     <RightBackgroundBubble />
     <Header>
@@ -18,6 +18,6 @@ const RestorePassword = () => (
       <Link to={PATH.SIGN_IN}>Sign In</Link>
     </Header>
     <ResetPasswordForm />
-  </AuthLayout>
+  </Layout>
 );
 export default RestorePassword;

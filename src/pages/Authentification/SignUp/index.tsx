@@ -11,10 +11,10 @@ import {
   SignUpFormContainer,
 } from 'pages/Authentification/SignUp/styles';
 import { PATH } from 'routes/constants';
-import { SocialMediaButton, AuthLayout, SignUpForm } from '../components';
+import { SocialMediaButton, Layout, SignUpForm } from '../components';
 
 const SignUp = () => (
-  <AuthLayout>
+  <Layout>
     <LeftBackgroundBubble />
     <RightBackgroundBubble />
     <SignUpContent>
@@ -31,7 +31,7 @@ const SignUp = () => (
     <SignUpFormContainer>
       <SignUpForm />
     </SignUpFormContainer>
-  </AuthLayout>
+  </Layout>
 );
 
 export default SignUp;

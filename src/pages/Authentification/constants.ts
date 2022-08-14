@@ -1,12 +1,13 @@
 import { PATH } from 'routes/constants';
 import Login from 'pages/Authentification/SignIn';
 import RestorePassword from 'pages/Authentification/RestorePassword';
+import Greeting from 'pages/Greeting';
 import SignUp from './SignUp';
 
 export const authRoutes = [
   {
     path: PATH.DEFAULT,
-    element: SignUp,
+    element: Greeting,
   },
   {
     path: PATH.SIGN_UP,

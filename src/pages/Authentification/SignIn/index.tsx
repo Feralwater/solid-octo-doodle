@@ -11,10 +11,10 @@ import {
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
-import { AuthLayout, SignInForm, SocialMediaButton } from '../components';
+import { Layout, SignInForm, SocialMediaButton } from '../components';
 
 const SignIn = () => (
-  <AuthLayout>
+  <Layout>
     <LeftBackgroundBubble />
     <RightBackgroundBubble />
     <SignInContent>
@@ -31,7 +31,7 @@ const SignIn = () => (
     <SignInFormContainer>
       <SignInForm />
     </SignInFormContainer>
-  </AuthLayout>
+  </Layout>
 );
 
 export default SignIn;
