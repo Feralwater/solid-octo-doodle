@@ -1,4 +1,3 @@
-const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
@@ -6,37 +5,34 @@ const passportSetup = require("./passport");
 const passport = require("passport");
 const authRoute = require("./routes/auth");
 require('dotenv').config()
-
-
+const mongoose = require('mongoose')
 const PORT = process.env.PORT || 5000;
+
+
 const app = express();
 
 const start = async () => {
     try {
+        await mongoose.connect(process.env.DB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
         app.listen(PORT, () => {
             console.log(`Server started on PORT ${PORT}`);
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
     }
 }
 
 start();
 
-app.use(
-  cookieSession({ name: "session", keys: ["privateKey"], maxAge: 24 * 60 * 60 * 100 })
-);
+app.use(express.json());
+app.use(cookieParser())
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use("/auth", authRoute);
