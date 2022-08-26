@@ -3,11 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const passportSetup = require("./passport");
 const passport = require("passport");
-const authRoute = require("./routes/auth");
 require('dotenv').config()
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 5000;
-
+const router = require("./routes/index");
 
 const app = express();
 
@@ -29,10 +28,10 @@ start();
 
 app.use(express.json());
 app.use(cookieParser())
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(cors());
+app.use("/api", router);
 
-app.use("/auth", authRoute);
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+
