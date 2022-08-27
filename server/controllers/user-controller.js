@@ -5,7 +5,7 @@ class UserController {
       try {
           const { email, password } = req.body;
           const userData = await userService.signUp(email, password);
-          res.cookies('refreshToken', userData.refreshToken, {maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true});
+          res.cookie('refreshToken', userData.refreshToken, {maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true});
           return res.json(userData);
       } catch (e) {
         console.log(e);
