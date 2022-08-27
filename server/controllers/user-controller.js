@@ -1,9 +1,14 @@
+const userService = require('../service/user-service');
+
 class UserController {
   async signUp(req, res, next) {
       try {
-
+          const { email, password } = req.body;
+          const userData = await userService.signUp(email, password);
+          res.cookies('refreshToken', userData.refreshToken, {maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true});
+          return res.json(userData);
       } catch (e) {
-
+        console.log(e);
       }
   }
     async signIn(req, res, next) {

@@ -1,18 +1,27 @@
-const UserModel = require('../models/user-model');
+const User = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const mailService = require('./mail-service');
+const tokenService = require('./token-service');
+const UserDto = require('../dtos/user-dto');
 
 class UserService {
     async signUp(email, password) {
-        const candidate = await UserModel.findOne({email});
+        const candidate = await User.findOne({email});
         if (candidate) {
             throw new Error('User with this email already exists');
         }
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4();
-        const user = await UserModel.create({ email, password: hashPassword, activationLink});
+
+        const user = await User.create({ email, password: hashPassword, activationLink});
         await mailService.sendActivationMail(email, activationLink);
+
+        const userDto = new UserDto(user);
+        const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
+        const token = await tokenService.saveToken(userDto.userId, refreshToken);
+
+        return { user: userDto, accessToken, refreshToken };
     }
 }
 
