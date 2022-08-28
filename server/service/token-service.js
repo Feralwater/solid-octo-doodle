@@ -18,6 +18,10 @@ class TokenService {
         await Token.create({ user: userId, refreshToken });
         return token;
     }
+
+    async removeToken(refreshToken) {
+        return Token.deleteOne({refreshToken});
+    }
 }
 
 module.exports = new TokenService();
