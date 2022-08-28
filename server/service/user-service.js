@@ -33,6 +33,22 @@ class UserService {
         user.isActivated = true;
         await user.save();
     }
+
+    async signIn(email, password) {
+        const user = await User.findOne({ email });
+        if (!user) {
+            throw ApiError.BadRequest('User with this email does not exist');
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw ApiError.BadRequest('Invalid password');
+        }
+        const userDto = new UserDto(user);
+        const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
+        await tokenService.saveToken(userDto.userId, refreshToken);
+
+        return { user: userDto, accessToken, refreshToken };
+    }
 }
 
 module.exports = new UserService();
