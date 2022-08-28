@@ -23,6 +23,15 @@ class UserService {
 
         return { user: userDto, accessToken, refreshToken };
     }
+
+    async activate(activationLink) {
+        const user = await User.findOne({ activationLink });
+        if (!user) {
+            throw new Error('Activation link is invalid');
+        }
+        user.isActivated = true;
+        await user.save();
+    }
 }
 
 module.exports = new UserService();
