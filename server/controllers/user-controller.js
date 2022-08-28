@@ -56,13 +56,6 @@ class UserController {
             next(e);
         }
     }
-    async getUsers(req, res, next) {
-        try {
-            res.json(['user1', 'user2'])
-        } catch (e) {
-            next(e);
-        }
-    }
 }
 
 module.exports = new UserController();
