@@ -1,11 +1,10 @@
-import axios from 'axios';
-import { AuthResponse } from 'models/response/AuthResponse';
+import api from 'http';
+import { AUTH_API } from 'services/constants';
 
-export const signIn = async (email: string, password: string) => axios
-  .post<AuthResponse>('/sign-in', { email, password });
+export const signIn = async (email: string, password: string) => api
+  .post(AUTH_API.authSignIn(), { email, password });
 
-export const signUp = async (email: string, password: string) => axios
-  .post<AuthResponse>('/sign-up', { email, password });
+export const signUp = async (email: string, password: string) => api
+  .post(AUTH_API.authSignUp(), { email, password });
 
-export const signOut = async () => axios
-  .post<void>('/sign-out');
+export const signOut = async () => api.post(AUTH_API.authSignOut());

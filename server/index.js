@@ -1,7 +1,7 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
-const passportSetup = require("server/service/passport");
+const passportSetup = require("./service/passport");
 const passport = require("passport");
 require('dotenv').config()
 const mongoose = require('mongoose')
@@ -25,11 +25,14 @@ const start = async () => {
     }
 }
 
-await start();
+start();
 
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONTEND_URL
+}));
 app.use("/api", router);
 app.use(passport.initialize());
 app.use(passport.session());

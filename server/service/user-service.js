@@ -54,12 +54,12 @@ class UserService {
         return await tokenService.removeToken(refreshToken);
     }
 
-    async refresh(refreshToken) {
-        if (!refreshToken) {
+    async refresh(refresh) {
+        if (!refresh) {
             throw ApiError.Unauthorized();
         }
-        const userData = await tokenService.validateRefreshToken(refreshToken);
-        const tokenFromDb = await tokenService.findToken(refreshToken);
+        const userData = await tokenService.validateRefreshToken(refresh);
+        const tokenFromDb = await tokenService.findToken(refresh);
         if (!tokenFromDb || !userData) {
             throw ApiError.Unauthorized();
         }

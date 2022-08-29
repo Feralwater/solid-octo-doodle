@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
+import Store from './store/store';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -25,6 +26,15 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+interface IStore {
+  store: Store;
+}
+
+const store = new Store();
+export const Context = createContext<IStore>({
+  store,
+});
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
@@ -33,7 +43,9 @@ root.render(
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <App />
+        <Context.Provider value={{ store }}>
+          <App />
+        </Context.Provider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
