@@ -1,4 +1,4 @@
-import api from 'http';
+import api from 'http/index';
 import { AUTH_API } from 'services/constants';
 
 export const signIn = async (email: string, password: string) => api
