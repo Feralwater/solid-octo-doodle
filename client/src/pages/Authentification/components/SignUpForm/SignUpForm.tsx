@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
 import { Context } from 'index';
 import { PHONE_REG_EXP } from 'regex';
+import { observer } from 'mobx-react-lite';
 
 const schema = yup.object().shape({
   username: yup.string().min(2).max(30).required('Username is required'),
@@ -15,7 +16,7 @@ const schema = yup.object().shape({
   phone: yup.string().matches(PHONE_REG_EXP, 'Phone number is not valid'),
 });
 
-export const SignUpForm = () => {
+const SignUpForm = () => {
   const {
     handleSubmit, register, formState: { errors },
   } = useForm<ISignUpInputs>({
@@ -90,3 +91,5 @@ export const SignUpForm = () => {
     </Form>
   );
 };
+
+export default observer(SignUpForm);

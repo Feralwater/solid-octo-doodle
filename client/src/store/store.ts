@@ -1,6 +1,8 @@
 import { IUser } from 'models/IUser';
 import { makeAutoObservable } from 'mobx';
-import { signIn, signOut, signUp } from 'services/AuthService';
+import {
+  refresh, signIn, signOut, signUp,
+} from 'services/AuthService';
 
 export default class Store {
   user = { } as IUser;
@@ -47,6 +49,17 @@ export default class Store {
       localStorage.removeItem('token');
       this.setIsAuth(false);
       this.setUser({} as IUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async checkIsAuth() {
+    try {
+      const response = await refresh();
+      localStorage.setItem('token', response.data.accessToken);
+      this.setIsAuth(true);
+      this.setUser(response.data.user);
     } catch (error) {
       console.log(error);
     }

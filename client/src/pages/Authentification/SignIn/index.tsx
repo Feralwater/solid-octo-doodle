@@ -11,7 +11,8 @@ import {
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
-import { Layout, SignInForm, SocialMediaButton } from 'pages/Authentification/components';
+import { Layout, SocialMediaButton } from 'pages/Authentification/components';
+import SignInForm from 'pages/Authentification/components/SignInForm/SignInForm';
 
 const SignIn = () => (
   <Layout>

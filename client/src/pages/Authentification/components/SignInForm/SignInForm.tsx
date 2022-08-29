@@ -12,13 +12,14 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { PATH } from 'routes/constants';
 import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(4).max(15).required(),
+  password: yup.string().min(6).max(15).required(),
 });
 
-export const SignInForm = () => {
+const SignInForm = () => {
   const {
     handleSubmit, register, formState: { errors },
   } = useForm<ISignInInputs>({
@@ -74,3 +75,5 @@ export const SignInForm = () => {
     </Form>
   );
 };
+
+export default observer(SignInForm);

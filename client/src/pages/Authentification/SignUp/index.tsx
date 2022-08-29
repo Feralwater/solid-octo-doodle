@@ -11,7 +11,8 @@ import {
   SignUpFormContainer,
 } from 'pages/Authentification/SignUp/styles';
 import { PATH } from 'routes/constants';
-import { SocialMediaButton, Layout, SignUpForm } from 'pages/Authentification/components';
+import { SocialMediaButton, Layout } from 'pages/Authentification/components';
+import SignUpForm from '../components/SignUpForm/SignUpForm';
 
 const SignUp = () => (
   <Layout>

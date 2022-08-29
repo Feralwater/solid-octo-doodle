@@ -1,5 +1,5 @@
 import { PATH } from 'routes/constants';
-import Login from 'pages/Authentification/SignIn';
+import SignIn from 'pages/Authentification/SignIn';
 import RestorePassword from 'pages/Authentification/RestorePassword';
 import Greeting from 'pages/Authentification/Greeting';
 import RestoreLinkSent from 'pages/Authentification/RestoreLinkSent';
@@ -16,7 +16,7 @@ export const authRoutes = [
   },
   {
     path: PATH.SIGN_IN,
-    element: Login,
+    element: SignIn,
   },
   {
     path: PATH.RESTORE_PASSWORD,
