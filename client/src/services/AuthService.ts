@@ -8,7 +8,7 @@ export const signUp = async (
   username: string,
   email: string,
   password: string,
-  phone: number | null,
+  phone: string,
 ) => api.post(AUTH_API.authSignUp(), {
   username, email, password, phone,
 });

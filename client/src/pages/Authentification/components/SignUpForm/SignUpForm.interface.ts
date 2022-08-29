@@ -2,5 +2,5 @@ export interface ISignUpInputs {
   username: string
   email: string
   password: string
-  phone: number | null
+  phone: string
 }

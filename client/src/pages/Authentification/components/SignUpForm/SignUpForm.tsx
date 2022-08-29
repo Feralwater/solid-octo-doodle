@@ -6,12 +6,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
 import { Context } from 'index';
+import { PHONE_REG_EXP } from 'regex';
 
 const schema = yup.object().shape({
-  username: yup.string().min(2).max(15).required('Username is required'),
+  username: yup.string().min(2).max(30).required('Username is required'),
   email: yup.string().email().required('Email is required'),
-  password: yup.string().min(4).max(15).required(),
-  phone: yup.number().required('Phone should be a number').nullable(),
+  password: yup.string().min(6).max(15).required(),
+  phone: yup.string().matches(PHONE_REG_EXP, 'Phone number is not valid'),
 });
 
 export const SignUpForm = () => {
@@ -22,7 +23,7 @@ export const SignUpForm = () => {
       username: '',
       email: '',
       password: '',
-      phone: null,
+      phone: '',
     },
     resolver: yupResolver(schema),
     mode: 'all',
