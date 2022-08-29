@@ -30,9 +30,9 @@ export default class Store {
     }
   }
 
-  async signUp(email: string, password: string) {
+  async signUp(username: string, email: string, password: string, phone: number | null) {
     try {
-      const response = await signUp(email, password);
+      const response = await signUp(username, email, password, phone);
       localStorage.setItem('token', response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);

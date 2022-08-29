@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Input } from 'components';
 import { ISignUpInputs } from 'pages/Authentification/components/SignUpForm/SignUpForm.interface';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
+import { Context } from 'index';
 
 const schema = yup.object().shape({
   username: yup.string().min(2).max(15).required('Username is required'),
@@ -27,8 +28,12 @@ export const SignUpForm = () => {
     mode: 'all',
   });
 
-  const onSubmit: SubmitHandler<ISignUpInputs> = ({ email, password }) => {
-    alert(`${email}, ${password}}`);
+  const { store } = useContext(Context);
+
+  const onSubmit: SubmitHandler<ISignUpInputs> = async ({
+    username, email, password, phone,
+  }) => {
+    await store.signUp(username, email, password, phone);
   };
 
   return (
