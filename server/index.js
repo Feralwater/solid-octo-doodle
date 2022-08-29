@@ -1,7 +1,7 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
-const passportSetup = require("./passport");
+const passportSetup = require("server/service/passport");
 const passport = require("passport");
 require('dotenv').config()
 const mongoose = require('mongoose')
@@ -25,15 +25,13 @@ const start = async () => {
     }
 }
 
-start();
+await start();
 
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors());
 app.use("/api", router);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(errorMiddleware);
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 
