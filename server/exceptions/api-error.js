@@ -1,18 +1,19 @@
 module.exports = class ApiError extends Error {
-    statusCode;
-    errors;
+  statusCode;
 
-    constructor(statusCode, message, errors = []) {
-        super(message);
-        this.statusCode = statusCode;
-        this.errors = errors;
-    }
+  errors;
 
-    static Unauthorized() {
-        return new ApiError(401, 'User is not authorized');
-    }
+  constructor(statusCode, message, errors = []) {
+    super(message);
+    this.statusCode = statusCode;
+    this.errors = errors;
+  }
 
-    static BadRequest(message, errors = []) {
-        return new ApiError(400, message, errors);
-    }
-}
+  static Unauthorized() {
+    return new ApiError(401, 'User is not authorized');
+  }
+
+  static BadRequest(message, errors = []) {
+    return new ApiError(400, message, errors);
+  }
+};
