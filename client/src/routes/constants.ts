@@ -5,6 +5,7 @@ export const PATH = {
   RESTORE_PASSWORD: '/restore-password',
   RESTORE_LINK_SENT: '/restore-link-sent',
   MY_PROFILE: '/my-profile',
+  ACTIVATION: '/activation',
 };
 
 export enum ROLES {

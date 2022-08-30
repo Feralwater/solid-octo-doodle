@@ -5,8 +5,10 @@ import { Context } from 'index';
 import { observer } from 'mobx-react-lite';
 
 function getDefaultPath(role: ROLES) {
+  const { store } = useContext(Context);
+
   switch (role) {
-    case ROLES.USER: return PATH.MY_PROFILE;
+    case ROLES.USER: return store.user.isActivated ? PATH.MY_PROFILE : PATH.ACTIVATION;
     case ROLES.PUBLIC: return PATH.SIGN_IN;
     default:
       throw new Error();
