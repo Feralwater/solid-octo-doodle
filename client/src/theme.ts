@@ -10,6 +10,7 @@ export const theme = {
     iron: '#D3D7E0',
     ghost: '#F7F9FC',
     pink: '#f50485',
+    primary03: 'rgba(86, 128, 249, 0.3)',
   },
 
   shadow: {

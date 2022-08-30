@@ -9,6 +9,8 @@ export default class Store {
 
   isAuth: boolean = false;
 
+  isLoading: boolean = false;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -54,7 +56,12 @@ export default class Store {
     }
   }
 
+  setIsLoading(isLoading: boolean) {
+    this.isLoading = isLoading;
+  }
+
   async checkIsAuth() {
+    this.setIsLoading(true);
     try {
       const response = await refresh();
       localStorage.setItem('token', response.data.accessToken);
@@ -62,6 +69,8 @@ export default class Store {
       this.setUser(response.data.user);
     } catch (error) {
       console.log(error);
+    } finally {
+      this.setIsLoading(false);
     }
   }
 }
