@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx';
 import {
   refresh, signIn, signOut, signUp,
 } from 'services/AuthService';
+import axios from 'axios';
 
 export default class Store {
   user = { } as IUser;
@@ -63,7 +64,7 @@ export default class Store {
   async checkIsAuth() {
     this.setIsLoading(true);
     try {
-      const response = await refresh();
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/refresh-token`, { withCredentials: true });
       localStorage.setItem('token', response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);
