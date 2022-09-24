@@ -13,12 +13,11 @@ import {
 import { PATH } from 'routes/constants';
 import { SocialMediaButton, Layout } from 'pages/Authentification/components';
 import { useGoogleLogin } from '@react-oauth/google';
-import { createOrGetUser } from 'utils';
 import SignUpForm from '../components/SignUpForm/SignUpForm';
 
 const SignUp = () => {
   const googleLogin = useGoogleLogin({
-    onSuccess: (tokenResponse) => createOrGetUser(tokenResponse),
+    onSuccess: (tokenResponse) => console.log(tokenResponse),
     onError: (error) => console.log(error),
   });
   const onGoogleLoginClick = () => googleLogin();
