@@ -1,8 +1,6 @@
 import { IUser } from 'models/IUser';
 import { makeAutoObservable } from 'mobx';
-import {
-  refresh, signIn, signOut, signUp,
-} from 'services/AuthService';
+import { signIn, signOut, signUp } from 'services/AuthService';
 import axios from 'axios';
 
 export default class Store {

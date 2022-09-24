@@ -3,12 +3,13 @@ import { LoginWithSocialMediaButton } from 'pages/Authentification/components/So
 
 interface ISocialMediaButton {
   icon: ReactNode;
-  text: string;
+  children: ReactNode;
+  onClick: () => void;
 }
 
-export const SocialMediaButton = ({ icon, text }:ISocialMediaButton) => (
-  <LoginWithSocialMediaButton type="button">
+export const SocialMediaButton = ({ icon, children, onClick }:ISocialMediaButton) => (
+  <LoginWithSocialMediaButton type="button" onClick={onClick}>
     <i>{icon}</i>
-    <span>{text}</span>
+    <span>{children}</span>
   </LoginWithSocialMediaButton>
 );
