@@ -23,8 +23,15 @@ passport.use(
       };
 
       try {
-        const user = await User
-          .findOrCreate({ googleId: profile.id, defaults: defaultUser });
+        const user = await User.find(
+          {
+            googleId: profile.id,
+            defaults: defaultUser,
+          },
+          {
+            upsert: true,
+          },
+        );
         cb(null, user);
       } catch (e) {
         console.log('google sign in error', e);

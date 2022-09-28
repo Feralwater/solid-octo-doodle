@@ -3,11 +3,11 @@ FROM node:16-alpine
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
 
-RUN mkdir -p /home/app
+RUN mkdir -p /home/index
 
-COPY . /home/app
+COPY . /home/index
 
-WORKDIR /home/app
+WORKDIR /home/index
 
 RUN npm install
 

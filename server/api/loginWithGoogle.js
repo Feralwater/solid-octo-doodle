@@ -13,7 +13,7 @@ router.get(
 );
 
 router.get(
-  '/auth/google/callback',
+  '/login/google/callback',
   passport.authenticate('google', {
     failureMessage: 'Cannot login to Google, please try again later!',
     failureRedirect: errorLoginUrl,
