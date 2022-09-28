@@ -5,6 +5,7 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
   isActivated: { type: Boolean, default: false },
   activationLink: { type: String },
+  googleId: { type: String, default: null },
 });
 
 module.exports = model('User', UserSchema);

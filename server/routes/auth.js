@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-const CLIENT_URL = 'http://localhost:3000/';
+const FRONTEND_URL = process.env;
 
 router.get('/login/success', (req, res) => {
   if (req.user) {
@@ -22,17 +22,22 @@ router.get('/login/failed', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect(CLIENT_URL);
+  res.redirect(FRONTEND_URL);
 });
 
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get('login/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get(
-  '/google/callback',
+  'auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: CLIENT_URL,
+    successRedirect: FRONTEND_URL,
     failureRedirect: '/login/failed',
+    failureMessage: 'Cannot login with google, please try again',
   }),
+  (req, res) => {
+    console.log('User:', req.user);
+    res.send('Thanks for logging in');
+  },
 );
 
 module.exports = router;
