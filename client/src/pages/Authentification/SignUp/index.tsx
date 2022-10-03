@@ -9,6 +9,7 @@ import {
   RightBackgroundBubble,
   SignUpContent,
   SignUpFormContainer,
+  SocialMediaButtonGroup,
 } from 'pages/Authentification/SignUp/styles';
 import { PATH } from 'routes/constants';
 import { SocialMediaButton, Layout } from 'pages/Authentification/components';
@@ -24,10 +25,10 @@ const SignUp = () => (
         <Paragraph>Do you already have an account?</Paragraph>
         <Link to={PATH.SIGN_IN}>Sign In</Link>
       </Header>
-      <div>
+      <SocialMediaButtonGroup>
         <SocialMediaButton icon={<Google />} text="Continue with Google" />
         <SocialMediaButton icon={<Facebook />} text="Continue with Facebook" />
-      </div>
+      </SocialMediaButtonGroup>
     </SignUpContent>
     <SignUpFormContainer>
       <SignUpForm />
