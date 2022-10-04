@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 5000;
+const { PORT } = process.env || 5000;
 const router = require('./routes/index');
 const errorMiddleware = require('./middlewares/error-middleware');
 
@@ -33,4 +33,4 @@ app.use(cors({
   origin: process.env.FRONTEND_URL,
 }));
 app.use('/api', router);
-// app.use(errorMiddleware);
+app.use(errorMiddleware);
