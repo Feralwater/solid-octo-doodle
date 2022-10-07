@@ -2,8 +2,12 @@ import api from 'http/index';
 import { AUTH_API } from 'services/constants';
 import { AuthResponse } from 'models/response/AuthResponse';
 
-export const signIn = async (email: string, password: string) => api
-  .post(AUTH_API.authSignIn(), { email, password });
+export const signIn = async (
+  email: string | null,
+  password: string | null,
+  googleToken?: string,
+) => api
+  .post(AUTH_API.authSignIn(), { email, password, googleToken });
 
 export const signUp = async (
   username: string,

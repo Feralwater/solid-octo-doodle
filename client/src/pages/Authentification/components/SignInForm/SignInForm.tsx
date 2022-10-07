@@ -19,7 +19,7 @@ const schema = yup.object().shape({
   password: yup.string().min(6).max(15).required(),
 });
 
-const SignInForm = () => {
+export const SignInForm = observer(() => {
   const {
     handleSubmit, register, formState: { errors },
   } = useForm<ISignInInputs>({
@@ -74,6 +74,4 @@ const SignInForm = () => {
       </Button>
     </Form>
   );
-};
-
-export default observer(SignInForm);
+});

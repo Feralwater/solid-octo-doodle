@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'react/require-default-props': 'off',
     'no-underscore-dangle': 'off',
+    'import/no-cycle': 'off',
   },
   settings: {
     'import/resolver': {

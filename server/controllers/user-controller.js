@@ -22,8 +22,10 @@ class UserController {
 
   async signIn(req, res, next) {
     try {
-      const { email, password } = req.body;
-      const userData = await userService.signIn(email, password);
+      const { email, password, googleToken } = req.body;
+      const userData = googleToken
+        ? await userService.googleSignIn(googleToken)
+        : await userService.signIn(email, password);
       res.cookie('refreshToken', userData.refreshToken, { maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true });
       return res.json(userData);
     } catch (e) {

@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
+const axios = require('axios').default;
 const User = require('../models/user-model');
 const mailService = require('./mail-service');
 const tokenService = require('./token-service');
 const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/api-error');
-const {log} = require("util");
 
 class UserService {
   async signUp(username, email, password, phone) {
@@ -19,7 +19,7 @@ class UserService {
     const user = await User.create({
       username, email, password: hashPassword, phone, activationLink,
     });
-    await mailService.sendActivationMail(email, `${process.env.APP_URL}/api/activate/${activationLink}`);
+    await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
     const userDto = new UserDto(user);
     const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
@@ -46,6 +46,29 @@ class UserService {
     if (!isPasswordValid) {
       throw ApiError.BadRequest('Invalid password');
     }
+    const userDto = new UserDto(user);
+    const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
+    await tokenService.saveToken(userDto.userId, refreshToken);
+
+    return { user: userDto, accessToken, refreshToken };
+  }
+
+  async googleSignIn(googleToken) {
+    const userInfo = await axios.get(
+      `${process.env.GOOGLE_APIS}`,
+      {
+        headers: {
+          Authorization: `Bearer ${googleToken}`,
+        },
+      },
+    );
+
+    const { email } = userInfo.data;
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw ApiError.BadRequest('User with this email does not exist');
+    }
+
     const userDto = new UserDto(user);
     const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.userId, refreshToken);
