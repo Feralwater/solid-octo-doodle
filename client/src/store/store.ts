@@ -24,9 +24,9 @@ export default class Store {
     this.isAuth = isAuth;
   }
 
-  async signIn(email: string, password: string) {
+  async signIn(email: string | null, password: string | null, googleToken?: string) {
     try {
-      const response = await signIn(email, password);
+      const response = await signIn(email, password, googleToken);
       localStorage.setItem('token', response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);

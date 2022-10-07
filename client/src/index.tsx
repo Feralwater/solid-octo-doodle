@@ -1,10 +1,11 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Store from './store/store';
 
 const GlobalStyle = createGlobalStyle`
@@ -43,9 +44,11 @@ root.render(
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Context.Provider value={{ store }}>
-          <App />
-        </Context.Provider>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}>
+          <Context.Provider value={{ store }}>
+            <App />
+          </Context.Provider>
+        </GoogleOAuthProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
