@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 import { signIn, signOut, signUp } from 'services/AuthService';
 import axios from 'axios';
 
-export default class Store {
+class Store {
   user = { } as IUser;
 
   isAuth: boolean = false;
@@ -73,3 +73,6 @@ export default class Store {
     }
   }
 }
+
+const store = new Store();
+export default store;

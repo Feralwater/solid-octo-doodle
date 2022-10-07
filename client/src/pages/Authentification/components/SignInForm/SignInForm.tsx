@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   ErrorBubble,
@@ -11,7 +11,7 @@ import { ISignInInputs } from 'pages/Authentification/components/SignInForm/Sign
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { PATH } from 'routes/constants';
-import { Context } from 'index';
+import store from 'store/store';
 import { observer } from 'mobx-react-lite';
 
 const schema = yup.object().shape({
@@ -30,8 +30,6 @@ export const SignInForm = observer(() => {
     resolver: yupResolver(schema),
     mode: 'all',
   });
-
-  const { store } = useContext(Context);
 
   const onSubmit: SubmitHandler<ISignInInputs> = async ({ email, password }) => {
     await store.signIn(email, password);

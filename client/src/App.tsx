@@ -1,12 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { AppRouter } from 'routes/AppRouter';
-import { Context } from 'index';
+import store from 'store/store';
 import { observer } from 'mobx-react-lite';
 import { Loader } from 'components';
 
 function App() {
-  const { store } = useContext(Context);
-
   useEffect(() => {
     if (localStorage.getItem('token')) {
       store.checkIsAuth();

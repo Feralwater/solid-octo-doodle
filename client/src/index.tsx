@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -6,7 +6,6 @@ import { theme } from 'theme';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Store from './store/store';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -27,15 +26,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-interface IStore {
-  store: Store;
-}
-
-const store = new Store();
-export const Context = createContext<IStore>({
-  store,
-});
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
@@ -45,9 +35,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}>
-          <Context.Provider value={{ store }}>
-            <App />
-          </Context.Provider>
+          <App />
         </GoogleOAuthProvider>
       </BrowserRouter>
     </ThemeProvider>

@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button } from 'components';
-import { Context } from 'index';
+import store from 'store/store';
 import { observer } from 'mobx-react-lite';
 
 const Profile = () => {
-  const { store } = useContext(Context);
   const handleClick = async () => store.signOut();
 
   return (

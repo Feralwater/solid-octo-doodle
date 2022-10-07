@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Input } from 'components';
 import { ISignUpInputs } from 'pages/Authentification/components/SignUpForm/SignUpForm.interface';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
-import { Context } from 'index';
+import store from 'store/store';
 import { PHONE_REG_EXP } from 'regex';
 import { observer } from 'mobx-react-lite';
 
@@ -29,8 +29,6 @@ export const SignUpForm = observer(() => {
     resolver: yupResolver(schema),
     mode: 'all',
   });
-
-  const { store } = useContext(Context);
 
   const onSubmit: SubmitHandler<ISignUpInputs> = async ({
     username, email, password, phone,

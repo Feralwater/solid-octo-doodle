@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ReactComponent as Google } from 'assets/svg/google.svg';
 import { ReactComponent as Facebook } from 'assets/svg/facebook.svg';
 import {
@@ -13,11 +13,10 @@ import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
 import { Layout, SocialMediaButton, SignInForm } from 'pages/Authentification/components';
 import { useGoogleLogin } from '@react-oauth/google';
-import { Context } from 'index';
+import store from 'store/store';
+import { observer } from 'mobx-react-lite';
 
-const SignIn = () => {
-  const { store } = useContext(Context);
-
+const SignIn = observer(() => {
   const signInWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       await store.signIn(null, null, tokenResponse.access_token);
@@ -55,6 +54,6 @@ const SignIn = () => {
       </SignInFormContainer>
     </Layout>
   );
-};
+});
 
 export default SignIn;
