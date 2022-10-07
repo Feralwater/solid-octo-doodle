@@ -11,8 +11,7 @@ import {
 import { Link, Paragraph } from 'components';
 import { Headline3 } from 'topography';
 import { PATH } from 'routes/constants';
-import { Layout, SocialMediaButton } from 'pages/Authentification/components';
-import SignInForm from 'pages/Authentification/components/SignInForm/SignInForm';
+import { Layout, SocialMediaButton, SignInForm } from 'pages/Authentification/components';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Context } from 'index';
 

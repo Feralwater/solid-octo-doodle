@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { refresh } from 'services/AuthService';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

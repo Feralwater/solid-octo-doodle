@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   phone: yup.string().matches(PHONE_REG_EXP, 'Phone number is not valid'),
 });
 
-const SignUpForm = () => {
+export const SignUpForm = observer(() => {
   const {
     handleSubmit, register, formState: { errors },
   } = useForm<ISignUpInputs>({
@@ -90,6 +90,4 @@ const SignUpForm = () => {
       </Button>
     </Form>
   );
-};
-
-export default observer(SignUpForm);
+});

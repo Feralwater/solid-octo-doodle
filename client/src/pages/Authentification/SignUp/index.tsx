@@ -12,8 +12,7 @@ import {
   SocialMediaButtonGroup,
 } from 'pages/Authentification/SignUp/styles';
 import { PATH } from 'routes/constants';
-import { SocialMediaButton, Layout } from 'pages/Authentification/components';
-import SignUpForm from '../components/SignUpForm/SignUpForm';
+import { SocialMediaButton, Layout, SignUpForm } from 'pages/Authentification/components';
 
 const SignUp = () => (
   <Layout>
@@ -26,8 +25,8 @@ const SignUp = () => (
         <Link to={PATH.SIGN_IN}>Sign In</Link>
       </Header>
       <SocialMediaButtonGroup>
-        <SocialMediaButton icon={<Google />} text="Continue with Google" />
-        <SocialMediaButton icon={<Facebook />} text="Continue with Facebook" />
+        <SocialMediaButton onClick={() => {}} icon={<Google />} text="Continue with Google" />
+        <SocialMediaButton onClick={() => {}} icon={<Facebook />} text="Continue with Facebook" />
       </SocialMediaButtonGroup>
     </SignUpContent>
     <SignUpFormContainer>
