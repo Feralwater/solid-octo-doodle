@@ -55,18 +55,9 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest('User with this email already exists');
     }
-    const password = generator.generate({
-      length: 8,
-      numbers: true,
-      lowercase: true,
-      uppercase: true,
-    });
     const user = await User.create({
-      username, email, password,
+      username, email, isActivated: true,
     });
-    user.isActivated = true;
-    await user.save();
-    await mailService.sendPassword(email, password);
     const userDto = new UserDto(user);
     const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.userId, refreshToken);
