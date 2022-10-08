@@ -29,6 +29,15 @@ class UserService {
     return { user: userDto, accessToken, refreshToken };
   }
 
+  async activate(activationLink) {
+    const user = await User.findOne({ activationLink });
+    if (!user) {
+      throw ApiError.BadRequest('Activation link is invalid');
+    }
+    user.isActivated = true;
+    await user.save();
+  }
+
   async googleSignUp(googleToken) {
     if (!googleToken) {
       throw ApiError.BadRequest('Something went wrong. Please try again');
@@ -46,7 +55,6 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest('User with this email already exists');
     }
-    const activationLink = uuid.v4();
     const password = generator.generate({
       length: 8,
       numbers: true,
@@ -54,23 +62,15 @@ class UserService {
       uppercase: true,
     });
     const user = await User.create({
-      username, email, password, activationLink,
+      username, email, password,
     });
+    user.isActivated = true;
+    await user.save();
     await mailService.sendPassword(email, password);
     const userDto = new UserDto(user);
     const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.userId, refreshToken);
-
     return { user: userDto, accessToken, refreshToken };
-  }
-
-  async activate(activationLink) {
-    const user = await User.findOne({ activationLink });
-    if (!user) {
-      throw ApiError.BadRequest('Activation link is invalid');
-    }
-    user.isActivated = true;
-    await user.save();
   }
 
   async signIn(email, password) {
