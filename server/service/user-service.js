@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const axios = require('axios').default;
+const generator = require('generate-password');
 const User = require('../models/user-model');
 const mailService = require('./mail-service');
 const tokenService = require('./token-service');
@@ -45,10 +46,17 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest('User with this email already exists');
     }
-
-    const user = await User.create({
-      username, email, password: 'jhujjdkddd', activationLink: '',
+    const activationLink = uuid.v4();
+    const password = generator.generate({
+      length: 8,
+      numbers: true,
+      lowercase: true,
+      uppercase: true,
     });
+    const user = await User.create({
+      username, email, password, activationLink,
+    });
+    await mailService.sendPassword(email, password);
     const userDto = new UserDto(user);
     const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.userId, refreshToken);

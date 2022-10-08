@@ -21,6 +21,15 @@ class MailService {
       text: `Hello,\n\nPlease click on the following link to activate your account: \n${link}\n\nRegards,\n${process.env.APP_NAME}`,
     });
   }
+
+  async sendPassword(to, password) {
+    await this.transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to,
+      subject: `Your password on ${process.env.API_URL}`,
+      text: `Hello,\n\nYour password is: \n${password}\n\nRegards,\n${process.env.APP_NAME}`,
+    });
+  }
 }
 
 module.exports = new MailService();
