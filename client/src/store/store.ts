@@ -1,6 +1,8 @@
 import { IUser } from 'models/IUser';
 import { makeAutoObservable } from 'mobx';
-import {googleSignUp, signIn, signOut, signUp } from 'services/AuthService';
+import {
+  googleSignUp, signIn, signOut, signUp,
+} from 'services/AuthService';
 import axios from 'axios';
 
 class Store {
