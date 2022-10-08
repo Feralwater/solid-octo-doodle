@@ -28,6 +28,34 @@ class UserService {
     return { user: userDto, accessToken, refreshToken };
   }
 
+  async googleSignUp(googleToken) {
+    if (!googleToken) {
+      throw ApiError.BadRequest('Something went wrong. Please try again');
+    }
+    const userInfo = await axios.get(
+      `${process.env.GOOGLE_APIS}`,
+      {
+        headers: {
+          Authorization: `Bearer ${googleToken}`,
+        },
+      },
+    );
+    const { name: username, email } = userInfo.data;
+    const candidate = await User.findOne({ email });
+    if (candidate) {
+      throw ApiError.BadRequest('User with this email already exists');
+    }
+
+    const user = await User.create({
+      username, email, password: 'jhujjdkddd', phone: '375295698569', activationLink: '',
+    });
+    const userDto = new UserDto(user);
+    const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
+    await tokenService.saveToken(userDto.userId, refreshToken);
+
+    return { user: userDto, accessToken, refreshToken };
+  }
+
   async activate(activationLink) {
     const user = await User.findOne({ activationLink });
     if (!user) {

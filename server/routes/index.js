@@ -12,6 +12,11 @@ router.post(
   body('phone').isMobilePhone('be-BY').withMessage('Phone is not valid'),
   userController.signUp,
 );
+router.post(
+  '/google/sign-up',
+  body('googleToken').isString().withMessage('Google token is not valid'),
+  userController.signUp,
+);
 router.post('/sign-in', userController.signIn);
 router.post('/sign-out', userController.signOut);
 router.get('/activate/:link', userController.activate);
