@@ -3,8 +3,6 @@ module.exports = class UserDto {
 
   email;
 
-  phone;
-
   userId;
 
   isActivated;
@@ -14,7 +12,6 @@ module.exports = class UserDto {
     this.email = model.email;
     this.userId = model._id;
     this.password = model.password;
-    this.phone = model.phone;
     this.isActivated = model.isActivated;
   }
 };

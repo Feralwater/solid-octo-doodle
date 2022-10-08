@@ -10,11 +10,11 @@ class UserController {
         return next(ApiError.BadRequest('Validation error', errors.array()));
       }
       const {
-        username, email, password, phone, googleToken,
+        username, email, password, googleToken,
       } = req.body;
       const userData = googleToken
         ? await userService.googleSignUp(googleToken)
-        : await userService.signUp(username, email, password, phone);
+        : await userService.signUp(username, email, password);
       res.cookie('refreshToken', userData.refreshToken, { maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true });
       return res.json(userData);
     } catch (e) {
