@@ -18,6 +18,9 @@ export const signUp = async (
   username, email, password, phone,
 });
 
+export const googleSignUp = async (googleToken: string) => api
+  .post(AUTH_API.authGoogleSignUp(), { googleToken });
+
 export const signOut = async () => api.post(AUTH_API.authSignOut());
 
 export const refresh = async () => api.get<AuthResponse>(AUTH_API.refresh());

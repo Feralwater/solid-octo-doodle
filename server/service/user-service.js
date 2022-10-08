@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const axios = require('axios').default;
+const generator = require('generate-password');
 const User = require('../models/user-model');
 const mailService = require('./mail-service');
 const tokenService = require('./token-service');
@@ -8,7 +9,7 @@ const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/api-error');
 
 class UserService {
-  async signUp(username, email, password, phone) {
+  async signUp(username, email, password) {
     const candidate = await User.findOne({ email });
     if (candidate) {
       throw ApiError.BadRequest('User with this email already exists');
@@ -17,7 +18,7 @@ class UserService {
     const activationLink = uuid.v4();
 
     const user = await User.create({
-      username, email, password: hashPassword, phone, activationLink,
+      username, email, password: hashPassword, activationLink,
     });
     await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
@@ -35,6 +36,32 @@ class UserService {
     }
     user.isActivated = true;
     await user.save();
+  }
+
+  async googleSignUp(googleToken) {
+    if (!googleToken) {
+      throw ApiError.BadRequest('Something went wrong. Please try again');
+    }
+    const userInfo = await axios.get(
+      `${process.env.GOOGLE_APIS}`,
+      {
+        headers: {
+          Authorization: `Bearer ${googleToken}`,
+        },
+      },
+    );
+    const { name: username, email } = userInfo.data;
+    const candidate = await User.findOne({ email });
+    if (candidate) {
+      throw ApiError.BadRequest('User with this email already exists');
+    }
+    const user = await User.create({
+      username, email, isActivated: true,
+    });
+    const userDto = new UserDto(user);
+    const { accessToken, refreshToken } = tokenService.generateToken({ ...userDto });
+    await tokenService.saveToken(userDto.userId, refreshToken);
+    return { user: userDto, accessToken, refreshToken };
   }
 
   async signIn(email, password) {

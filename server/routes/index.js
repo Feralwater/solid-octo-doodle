@@ -9,7 +9,11 @@ router.post(
   body('username').isString().isLength({ min: 2, max: 30 }),
   body('email').isEmail().withMessage('Email is not valid'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 chars long'),
-  body('phone').isMobilePhone('be-BY').withMessage('Phone is not valid'),
+  userController.signUp,
+);
+router.post(
+  '/google/sign-up',
+  body('googleToken').isString().withMessage('Google token is not valid'),
   userController.signUp,
 );
 router.post('/sign-in', userController.signIn);

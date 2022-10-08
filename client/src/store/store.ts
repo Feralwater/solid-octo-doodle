@@ -1,6 +1,8 @@
 import { IUser } from 'models/IUser';
 import { makeAutoObservable } from 'mobx';
-import { signIn, signOut, signUp } from 'services/AuthService';
+import {
+  googleSignUp, signIn, signOut, signUp,
+} from 'services/AuthService';
 import axios from 'axios';
 
 class Store {
@@ -36,6 +38,17 @@ class Store {
   async signUp(username: string, email: string, password: string, phone: string) {
     try {
       const response = await signUp(username, email, password, phone);
+      localStorage.setItem('token', response.data.accessToken);
+      this.setIsAuth(true);
+      this.setUser(response.data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async googleSignUp(googleToken: string) {
+    try {
+      const response = await googleSignUp(googleToken);
       localStorage.setItem('token', response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);
