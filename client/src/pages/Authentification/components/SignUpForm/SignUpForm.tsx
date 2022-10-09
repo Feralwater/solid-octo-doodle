@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 export const SignUpForm = observer(() => {
   const {
-    handleSubmit, register, formState: { errors }, getValues,
+    handleSubmit, register, formState: { errors }, watch,
   } = useForm<ISignUpInputs>({
     defaultValues: {
       username: '',
@@ -72,6 +72,7 @@ export const SignUpForm = observer(() => {
           label="I accept terms and privacy policy"
           id="agreement"
           {...register('checkbox')}
+          checked={watch('checkbox')}
         />
         <ErrorBubble>{errors.checkbox?.message}</ErrorBubble>
       </InputContainer>
