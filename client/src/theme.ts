@@ -18,6 +18,7 @@ export const theme = {
   },
 
   border: {
+    primary: '1px solid #5680F9',
     focus: '2px solid #78B5FA',
     button: '1px solid #78B5FA',
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Input } from 'components';
+import { Button, Checkbox, Input } from 'components';
 import { ISignUpInputs } from 'pages/Authentification/components/SignUpForm/SignUpForm.interface';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 export const SignUpForm = observer(() => {
   const {
-    handleSubmit, register, formState: { errors },
+    handleSubmit, register, formState: { errors }, getValues,
   } = useForm<ISignUpInputs>({
     defaultValues: {
       username: '',
@@ -30,9 +30,9 @@ export const SignUpForm = observer(() => {
   });
 
   const onSubmit: SubmitHandler<ISignUpInputs> = async ({
-    username, email, password, checkbox,
+    username, email, password,
   }) => {
-    await store.signUp(username, email, password, checkbox);
+    await store.signUp(username, email, password);
   };
 
   return (
@@ -68,9 +68,9 @@ export const SignUpForm = observer(() => {
         <ErrorBubble>{errors.password?.message}</ErrorBubble>
       </InputContainer>
       <InputContainer>
-        <input
+        <Checkbox
+          label="I accept terms and privacy policy"
           id="agreement"
-          type="checkbox"
           {...register('checkbox')}
         />
         <ErrorBubble>{errors.checkbox?.message}</ErrorBubble>

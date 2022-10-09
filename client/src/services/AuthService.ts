@@ -13,10 +13,7 @@ export const signUp = async (
   username: string,
   email: string,
   password: string,
-  checkbox: boolean,
-) => api.post(AUTH_API.authSignUp(), {
-  username, email, password, checkbox,
-});
+) => api.post(AUTH_API.authSignUp(), { username, email, password });
 
 export const googleSignUp = async (googleToken: string) => api
   .post(AUTH_API.authGoogleSignUp(), { googleToken });

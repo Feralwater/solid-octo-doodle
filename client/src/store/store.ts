@@ -35,9 +35,9 @@ class Store {
     }
   }
 
-  async signUp(username: string, email: string, password: string, checkbox: boolean) {
+  async signUp(username: string, email: string, password: string) {
     try {
-      const response = await signUp(username, email, password, checkbox);
+      const response = await signUp(username, email, password);
       localStorage.setItem('token', response.data.accessToken);
       this.setIsAuth(true);
       this.setUser(response.data.user);

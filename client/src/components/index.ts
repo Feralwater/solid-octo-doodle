@@ -3,3 +3,4 @@ export * from './Button/Button';
 export * from './Link/Link';
 export * from './Paragraph/Paragraph';
 export * from './Loder/Loader';
+export * from './Checkbox/Checkbox';
