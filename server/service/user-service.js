@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const axios = require('axios').default;
-const generator = require('generate-password');
 const User = require('../models/user-model');
 const mailService = require('./mail-service');
 const tokenService = require('./token-service');

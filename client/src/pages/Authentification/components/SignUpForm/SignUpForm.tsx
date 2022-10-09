@@ -1,39 +1,38 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Input } from 'components';
+import { Button, Checkbox, Input } from 'components';
 import { ISignUpInputs } from 'pages/Authentification/components/SignUpForm/SignUpForm.interface';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
 import store from 'store/store';
-import { PHONE_REG_EXP } from 'regex';
 import { observer } from 'mobx-react-lite';
 
 const schema = yup.object().shape({
   username: yup.string().min(2).max(30).required('Username is required'),
   email: yup.string().email().required('Email is required'),
   password: yup.string().min(6).max(15).required(),
-  phone: yup.string().matches(PHONE_REG_EXP, 'Phone number is not valid'),
+  checkbox: yup.boolean().required().oneOf([true], 'You must accept the terms and conditions'),
 });
 
 export const SignUpForm = observer(() => {
   const {
-    handleSubmit, register, formState: { errors },
+    handleSubmit, register, formState: { errors }, watch,
   } = useForm<ISignUpInputs>({
     defaultValues: {
       username: '',
       email: '',
       password: '',
-      phone: '',
+      checkbox: false,
     },
     resolver: yupResolver(schema),
     mode: 'all',
   });
 
   const onSubmit: SubmitHandler<ISignUpInputs> = async ({
-    username, email, password, phone,
+    username, email, password,
   }) => {
-    await store.signUp(username, email, password, phone);
+    await store.signUp(username, email, password);
   };
 
   return (
@@ -69,14 +68,13 @@ export const SignUpForm = observer(() => {
         <ErrorBubble>{errors.password?.message}</ErrorBubble>
       </InputContainer>
       <InputContainer>
-        <Input
-          inputSize="small"
-          label="Phone"
-          id="phone"
-          type="tel"
-          {...register('phone')}
+        <Checkbox
+          label="I accept terms and privacy policy"
+          id="agreement"
+          {...register('checkbox')}
+          checked={watch('checkbox')}
         />
-        <ErrorBubble>{errors.phone?.message}</ErrorBubble>
+        <ErrorBubble>{errors.checkbox?.message}</ErrorBubble>
       </InputContainer>
       <Button
         color="primary"

@@ -13,10 +13,7 @@ export const signUp = async (
   username: string,
   email: string,
   password: string,
-  phone: string,
-) => api.post(AUTH_API.authSignUp(), {
-  username, email, password, phone,
-});
+) => api.post(AUTH_API.authSignUp(), { username, email, password });
 
 export const googleSignUp = async (googleToken: string) => api
   .post(AUTH_API.authGoogleSignUp(), { googleToken });
