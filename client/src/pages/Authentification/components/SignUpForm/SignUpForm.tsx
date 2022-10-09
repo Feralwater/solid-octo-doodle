@@ -6,14 +6,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ErrorBubble, Form, InputContainer } from 'pages/Authentification/components/SignUpForm/SignUpForm.styles';
 import store from 'store/store';
-import { PHONE_REG_EXP } from 'regex';
 import { observer } from 'mobx-react-lite';
 
 const schema = yup.object().shape({
   username: yup.string().min(2).max(30).required('Username is required'),
   email: yup.string().email().required('Email is required'),
   password: yup.string().min(6).max(15).required(),
-  phone: yup.string().matches(PHONE_REG_EXP, 'Phone number is not valid'),
+  checkbox: yup.boolean().required().oneOf([true], 'You must accept the terms and conditions'),
 });
 
 export const SignUpForm = observer(() => {
@@ -24,16 +23,16 @@ export const SignUpForm = observer(() => {
       username: '',
       email: '',
       password: '',
-      phone: '',
+      checkbox: false,
     },
     resolver: yupResolver(schema),
     mode: 'all',
   });
 
   const onSubmit: SubmitHandler<ISignUpInputs> = async ({
-    username, email, password, phone,
+    username, email, password, checkbox,
   }) => {
-    await store.signUp(username, email, password, phone);
+    await store.signUp(username, email, password, checkbox);
   };
 
   return (
@@ -69,14 +68,12 @@ export const SignUpForm = observer(() => {
         <ErrorBubble>{errors.password?.message}</ErrorBubble>
       </InputContainer>
       <InputContainer>
-        <Input
-          inputSize="small"
-          label="Phone"
-          id="phone"
-          type="tel"
-          {...register('phone')}
+        <input
+          id="agreement"
+          type="checkbox"
+          {...register('checkbox')}
         />
-        <ErrorBubble>{errors.phone?.message}</ErrorBubble>
+        <ErrorBubble>{errors.checkbox?.message}</ErrorBubble>
       </InputContainer>
       <Button
         color="primary"

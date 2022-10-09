@@ -13,9 +13,9 @@ export const signUp = async (
   username: string,
   email: string,
   password: string,
-  phone: string,
+  checkbox: boolean,
 ) => api.post(AUTH_API.authSignUp(), {
-  username, email, password, phone,
+  username, email, password, checkbox,
 });
 
 export const googleSignUp = async (googleToken: string) => api
