@@ -4,8 +4,9 @@ import { CookieConsent } from 'react-cookie-consent';
 const CookieBanner = () => (
   <CookieConsent
     debug
+    overlay
     style={{
-      background: 'RGB(86, 128, 249, 0.1)',
+      background: 'RGB(86, 128, 249, 0.4)',
       height: '80px',
       borderRadius: '4px',
       fontSize: '14px',
