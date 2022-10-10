@@ -5,6 +5,7 @@ import { PATH } from 'routes/constants';
 import { Layout } from 'components/Layout/Layout';
 import { GreetingImage, GreetingLayout, StyledLink } from 'pages/Authentification/Greeting/styles';
 import { ReactComponent as StartImage } from 'assets/svg/startImage.svg';
+import CookieBanner from 'pages/Authentification/components/CookieBanner/CookieBanner';
 
 const Greeting = () => (
   <Layout>
@@ -19,6 +20,7 @@ const Greeting = () => (
       </Paragraph>
       <StyledLink to={PATH.SIGN_IN}>Start now</StyledLink>
     </GreetingLayout>
+    <CookieBanner />
   </Layout>
 );
 
